@@ -1,0 +1,12 @@
+#outer-content {
+    background-color:pink;
+    width:75%;
+    padding:20px;
+    text-align:left;
+}
+
+
+#inner-content {
+    background-color:blue;
+    width:75%;
+}
