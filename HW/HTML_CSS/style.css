@@ -7,6 +7,24 @@
 
 
 #inner-content {
-    background-color:blue;
+    background-color:lightblue;
     width:75%;
+}
+
+tr:nth-of-type(even) {
+    background:lightgreen;
+}
+
+tr:nth-of-type(3) {
+    background:lightblue;
+}
+tr:nth-of-type(5) {
+    background:lightblue;
+}
+
+td:nth-of-type(6n+2) {
+    color:red;
+}
+td:nth-of-type(6n+4) {
+    color:blue;
 }
