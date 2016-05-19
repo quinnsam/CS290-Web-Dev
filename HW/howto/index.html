@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<!-- 
+    Template Heavily modified by
+    http://www.blacktie.co BLACKTIE.CO
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pratt - Free Bootstrap 3 Theme">
+<meta name="author" content="Alvarez.is - BlackTie.co">
+<link rel="shortcut icon" href="assets/ico/favicon.png">
+
+<title>Coinbase API - Sam Quinn</title>
+
+<!-- Bootstrap core CSS -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="assets/css/main.css" rel="stylesheet">
+
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/smoothscroll.js"></script>
+
+
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navigation">
+
+<!-- Fixed navbar -->
+<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.coinbase.com"><b>Coinbase</b></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#home" class="smothscroll">Home</a></li>
+                <li><a href="#desc" class="smothscroll">Overview</a></li>
+                <li><a href="#auth" class="smothScroll">Authentication</a></li>
+                <li><a href="#accounts" class="smothScroll">Accounts</a></li>
+                <li><a href="#orders" class="smothScroll">Orders</a></li>
+                <li><a href="#transfer" class="smothScroll">Transfers</a></li>
+                <li><a href="#mark" class="smothScroll">Market Data</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<section id="home" name="home"></section>
+<div id="headerwrap">
+    <div class="container">
+        <div class="row centered">
+            <div class="col-lg-12">
+                <h1>Welcome To <b>Coinbase</b> Tutorial</h1>
+                <h3>A brief introduction to the Coinbase API.</h3>
+                <br>
+            </div>
+
+            <div class="col-lg-2">
+                <h5>Most popular</h5>
+                <p>Most used way to buy, sell, and use bitcoin.</p>
+                <img class="hidden-xs hidden-sm hidden-md" src="assets/img/arrow1.png">
+            </div>
+            <div class="col-lg-8" align="center">
+                <img class="img-responsive" src="assets/img/intro1.png" alt="">
+            </div>
+            <div class="col-lg-2">
+                <br><br>
+                <img class="hidden-xs hidden-sm hidden-md" src="assets/img/arrow2.png">
+                <h5>Merchant API</h5>
+                <p>Accept payments from anywhere in the world anonymously with bitcoin.</p>
+            </div>
+        </div>
+    </div> <!--/ .container -->
+</div><!--/ #headerwrap -->
+
+
+<section id="desc" name="desc"></section>
+<!-- INTRO WRAP -->
+<div id="intro">
+    <div class="container">
+        <div class="row centered">
+            <h1>Topics Covered</h1>
+            <br>
+            <br>
+            <div class="col-lg-3">
+                <img src="assets/img/account.png" alt="">
+                <h3><a href="#accounts">Accounts</a></h3>
+                <p>How to view all of your accounts and what their balances are.</p>
+            </div>
+            <div class="col-lg-3">
+                <img src="assets/img/order.png" alt="">
+                <h3><a href="#orders">Orders</a></h3>
+                <p>How to create and list all orders on the Coinbase Exchange.</p>
+            </div>
+            <div class="col-lg-3">
+                <img src="assets/img/transfer.png" alt="">
+                <h3><a href="#transfer">Transfers</a></h3> 
+                <p>Move funds between Coinbase Exchange trading accounts and wallets.</p>
+            </div>
+            <div class="col-lg-3">
+                <img src="assets/img/mark.png" alt="">
+                <h3><a href="#mark">Market Data</a></h3>
+                <p>Retrieve information about the current market status.</p>
+            </div>
+        </div>
+        <br>
+        <hr>
+    </div> <!--/ .container -->
+</div><!--/ #introwrap -->
+
+<!-- FEATURES WRAP -->
+<div id="features">
+    <div class="container">
+        <div class="row">
+            <h1 class="centered">Introduction</h1>
+            <br>
+            <br>
+            <blockquote>
+                Coinbase Exchange operated by Coinbase (business), the leading Bitcoin company. Coinbase has raised more than $106M from top tier investors including the New York Stock Exchange and is the largest bitcoin wallet and merchant platform in the world. Coinbase Exchange launched in late January 2015 and is available in the USA, Europe, the UK, and Canada.
+                <h4 align="right">- BitcoinWiki<h4>
+                    </blockquote>
+                    <h3 class="centered">Tutorial objective</h3>
+                    <p>Coinbase does not have a command line interface, most of Coinbase Exchange transactions are through their website. For this tutorial I will cover the Coinbase Exchange API and expand on Authentication, Accounts, Orders, Transfers, and Market data. I will mainly go through each topic I have listed and describe the command as well as the returned JSON. While the official
+                    Coinbase Exchange documentation listed <a class="norm" href="https://docs.exchange.coinbase.com/?javascript#api">here</a> is very good, my goal is to provide only content that will allow you to interact with the Coinbase Exchange API at a basic level. Please reference the official documentation if you ever need supplemental information. </p>
+
+                    <br>
+                    <br>
+                    <section id="auth" name="auth"></section>
+                    <h3>Authentication</h3>
+                    <br>
+                    <!-- ACCORDION -->
+                    <div class="accordion ac" id="accordion2">
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                    CB Access
+                                </a>
+                            </div><!-- /accordion-heading -->
+                            <div id="collapseOne" class="accordion-body collapse in">
+                                <div class="accordion-inner">
+                                    <div class="col-lg-6">
+                                        <p>The Coinbase Exchange API uses 4 unique access strings in the header of each REST request.</p>
+                                        <ul>
+                                            <li><b>CB-ACCESS-KEY:</b> Your unique API key.</li>
+                                            <li><b>CB-ACCESS-SIGN:</b> Base64 encoded sha256 HMAC signature.</li>
+                                            <li><b>CB-ACCESS-TIMESTAMP:</b> Timestamp for your request in Unix Epoch time.</li>
+                                            <li><b>CB-ACCESS-PASSPHRASE:</b> A unique passphrase that is set during API key creation.</li>
+                                        </ul>
+                                        <p>
+                                        All of the REST requests to Coinbase must be in "Application/JSON" format as show to the right.
+                                        Get your required access strings from <a class="norm", href="https://exchange.coinbase.com/settings/api">Account settings</a> . </p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p>An example of an API call using <b>Curl</b> on Linux would need look like this:</p> 
+                                        <br>
+                                        <code>
+                                            curl --header ‘CB-ACCESS-KEY: &ltACCESS KEY&gt, \
+                                            <br>&nbsp; CB-ACCESS-SIGN: &ltACCESS SIGN&gt, \
+                                            <br>&nbsp; CB-ACCESS-TIMESTAMP: &ltACCESS TIMESTAMP&gt, \
+                                            <br>&nbsp; CB-ACCESS-PASSPHRASE: &ltACCESS PASSPHRASE&gt’ \
+                                            <br>&nbsp; https://api.exchange.coinbase.com/
+                                        </code>
+
+                                        <p>While this particular command will not work it is the basis for everyone of the following examples and must be included and in further examples will just list it as CB-AUTH.</p>
+                                        <br>
+                                    </div><!-- /right pannel -->
+                                </div><!-- /accordion-inner -->
+                            </div><!-- /collapse -->
+                        </div><!-- /accordion-group -->
+                        <section id="accounts" name="accounts"></section>
+                        <h3>Accounts</h3>
+                        <br>
+                        <!-- ACCORDION -->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsebOne">
+                                    List Accounts
+                                </a>
+                            </div><!-- /accordion-heading -->
+                            <div id="collapsebOne" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <div class="col-lg-6">
+                                        <p>You can attach an unlimited amount of accounts to your Coinbase Exchange but they are trading accounts only, which are different from just the regular Coinbase account. It is often useful to check the balance of each trading account, and this can be done with the API.</p>
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>
+                                            &nbsp;   https://api.exchange.coinbase.com/accounts 
+                                        </code>
+                                        <p><br> The command listed above will list the status of all of the trading accounts that are registered to you, however, if you are trying to see only one account you may add the <b>account ID</b> to the URL as shown:</p>
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>
+                                            &nbsp;   https://api.exchange.coinbase.com/accounts/&ltACCOUNT-ID&gt 
+                                        </code>
+                                        
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p>This returns an array of every account that is registered to your Coinbase Exchange account. Within the returned JSON each account will have an <b>id</b> that can be used latter to uniquely identify the account.  Each account's <b>balance</b> will be listed and the <b>available</b> will be the funds able to trade.</p>
+
+                                        <pre>
+[
+    {
+        "id": "a12c3d4",
+        "balance": "4.520",
+        "hold": "0.100",
+        "available": "100.00",
+        "currency": "USD"
+    }
+    {
+        "id": "a1b2c3df",
+        "balance": "1.100",
+        "hold": "0.100",
+        "available": "1.00",
+        "currency": "USD"
+    }
+]
+                                        </pre>
+                                    </div><!-- /right pannel -->
+                                </div><!-- /accordion-inner -->
+                            </div><!-- /collapse -->
+                        </div><!-- /accordion-group -->
+                        <br>
+
+                        <!-- ACCORDION -->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsebTwo">
+                                    Account History
+                                </a>
+                            </div><!-- /accordion-heading -->
+                            <div id="collapsebTwo" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <div class="col-lg-6">
+                                        <p>Each Coinbase Exchange account keeps track of it recent trades and is accessible through the API with account history. Every trade an account makes either increases or decreases the accounts balance. You can check the history of an account using the command below.</p>
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>
+                                            &nbsp;   https://api.exchange.coinbase.com/accounts/&ltACCOUNT-ID&gt/ledger 
+                                        </code>
+                                        <p><br>If you would like to retrieve account history between a certain time range you can use Pagination, for example you want to get the last 30 trades before trade <b>id</b> 67 you could do this.</p>
+                                        
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>
+                                            &nbsp;   https://api.exchange.coinbase.com/accounts/&ltACCOUNT-ID&gt/\
+                                            <br>&nbsp; ledger?before=67&limit=30 
+                                        </code>
+                                        
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p> The ledger added to the REST API URL will return the latest trade made by the account identified by <b>ACCOUNT-ID</b>. The resulting JSON that is returned will be as formatted below.
+
+
+                                        <pre>
+[
+    {
+        "id": "100",
+        "created_at": "2014-11-07T08:19:27.028459Z",
+        "amount": "0.001",
+        "balance": "239.669",
+        "type": "fee",
+        "details": {
+            "order_id": "d50ec984-77a8-460a-b958-66f114b0de9b",
+            "trade_id": "74",
+            "product_id": "BTC-USD"
+        }
+    }
+]
+                                        </pre>
+                                       
+                                    </div><!-- /right pannel -->
+                                </div><!-- /accordion-inner -->
+                            </div><!-- /collapse -->
+                        </div><!-- /accordion-group -->
+                        <br>
+
+
+                        <section id="orders" name="orders"></section>
+                        <h3>Orders</h3>
+                        <br>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsecOne">
+                                    Creating a New Order
+                                </a>
+                            </div>
+                            <div id="collapsecOne" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <div class="col-lg-6">
+                                    <p>Orders come in 3 different types <i>Limit, Market, and Stop</i>. Orders can only be created if the supplying account has adequate funds. Once a trade is made the requested funds will be put on hold until the transaction is finalized. To buy 4 bitcoin from the exchange at $420 USD you will send a command as follows.</p>
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>&nbsp;--data-binary '{"type":"limit", "side":"buy", \
+                                            <br>&nbsp; "product_id":"BTC-USD","price":"420", "size":"4"}' \
+                                            <br>&nbsp;--request POST \
+                                            <br>&nbsp;https://api.exchange.coinbase.com/orders
+                                        </code>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p><br>The result of a successful trade will only return an <b>order id.</b><br><br></p> 
+                                        <pre>
+{
+    "id": "0428b97b-bec1-429e-a94c-59992926778d"
+}
+                                        </pre>                                    
+                                        <p><br></p>
+                                    </div><!-- /right pannel -->
+                                </div><!-- /accordion-inner -->
+                            </div><!-- /collapse -->
+                        </div><!-- /accordion-group -->
+                        <br>
+
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsecTwo">
+                                    List Orders
+                                </a>
+                            </div>
+                            <div id="collapsecTwo" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <div class="col-lg-6">
+                                        <p>Every trade an account makes is strode in the public ledger. To list the open orders, either open or un-settled orders, the following command is used.
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>&nbsp;https://api.exchange.coinbase.com/orders
+                                        </code>
+                                        <p>As you can see from the example this transaction has not been settled yet. By default if no status query is defined it will return open orders but you can retrieve all orders that are done with the following.
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>&nbsp;https://api.exchange.coinbase.com/orders?status=done
+                                        </code>
+                                    </div><!-- /right pannel -->
+                                    </div><!--/left pannel -->
+                                    <div class="col-lg-6">
+                                        <p>The open orders are returned in a JSON object that includes the following.
+                                        <pre>
+[
+    {
+        "id": "d50ec984-77a8-460a-b958-66f114b0de9b",
+        "size": "3.0",
+        "price": "100.23",
+        "product_id": "BTC-USD",
+        "status": "open",
+        "filled_size": "1.23",
+        "fill_fees": "0.001",
+        "settled": false,
+        "side": "buy",
+        "created_at": "2014-11-14T06:39:55.189376Z"
+    }
+]                                        
+										</pre>
+                                </div><!-- /accordion-inner -->
+                            </div><!-- /collapse -->
+                        </div><!-- /accordion-group -->
+                        <br>
+
+                        <section id="transfer" name="transfer"></section>
+                        <h3>Transfer Funds</h3>
+                        <br>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsedOne">
+                                    Deposit/Withdraw
+                                </a>
+                            </div>
+                            <div id="collapsedOne" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <div class="col-lg-6">
+                                        <p>Once your accounts begin to trade more it is useful to be able to transfer funds between Coinbase Exchange trading accounts. This is accomplished with a POST command as shown.</p>
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>&nbsp;--data-binary '{"type":"deposit", "amount":"10.32", \
+                                            <br>&nbsp; "coinbase_account_id":"b5344d81b42e65f81af9ceba"}' \
+                                            <br>&nbsp;--request POST \
+                                            <br>&nbsp;https://api.exchange.coinbase.com/transfers
+                                        </code>
+
+                                    </div><!--/left pannel -->
+                                    <div class="col-lg-6">
+                                        <p>A very similar command is used to withdraw funds from an account.</p>
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>&nbsp;--data-binary '{"type":"withdraw", "amount":"1.25", \
+                                            <br>&nbsp; "coinbase_account_id":"b5145151b42e65f81af9ceba"}' \
+                                            <br>&nbsp;--request POST \
+                                            <br>&nbsp;https://api.exchange.coinbase.com/transfers
+                                        </code>
+                                    <p><br>You are able to withdraw funds to any of your active Coinbase accounts outside of the exchange, including vaults. However you do have a daily limit on the amount of funds you are able to withdraw in one day.
+                                    </div><!-- /right pannel -->
+                                </div><!-- /accordion-inner -->
+                            </div><!-- /collapse -->
+                        </div><!-- /accordion-group -->
+
+                        <section id="mark" name="mark"></section>
+                        <h3>Market Data</h3>
+                        <br>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsedeOne">
+                                   Trades
+                                </a>
+                            </div>
+                            <div id="collapsedeOne" class="accordion-body collapse">
+                                <div class="accordion-inner">
+
+                                    <div class="col-lg-6">
+                                        <p>As I showed in the Orders section to show your own trades, you can also access every trade that is being transacted on the Coinbase Exchange network.</p> 
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>&nbsp;https://api.exchange.coinbase.com/products/\
+                                            <br>&nbsp;BTC-USD/trades?limit=2
+                                        </code>
+
+                                    </div><!--/left pannel -->
+                                    <div class="col-lg-6">
+                                        <p>The out come is a JSON list with the most recent trades with the limits provided via pagination.</p> 
+                                        <pre>
+[{
+    "time": "2014-11-07T22:19:28.578544Z",
+    "trade_id": 74,
+    "price": "10.00000000",
+    "size": "0.01000000",
+    "side": "buy"
+}, {
+    "time": "2014-11-07T01:08:43.642366Z",
+    "trade_id": 73,
+    "price": "100.00000000",
+    "size": "0.01000000",
+    "side": "sell"
+}]
+                                        </pre>
+                                    </div><!-- /right pannel-->
+                                </div><!-- /accordion-inner -->
+                            </div><!-- /collapse -->
+                        </div><!-- /accordion-group -->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsedeTwo">
+                                   24HR Stats
+                                </a>
+                            </div>
+                            <div id="collapsedeTwo" class="accordion-body collapse">
+                                <div class="accordion-inner">
+
+                                    <div class="col-lg-6">
+                                        <p>It is often times very useful to analyze the market trend. With the use of 24 hour stats you are able to retrieve the last 24 hours high, low, open, and volume.</p>
+                                        <code>
+                                            curl --header ‘CB-AUTH’ \
+                                            <br>&nbsp;https://api.exchange.coinbase.com/products/\
+                                            <br>&nbsp;BTC-USD/stats
+                                        </code>
+
+                                    </div><!--/left pannel -->
+                                    <div class="col-lg-6">
+                                        <p>The stats command will tell you the opening price, the high price, the low price, and the volume of trades in JSON format. 
+                                        <pre>
+                                        
+{
+    "open": "34.19000000",
+    "high": "95.70000000",
+    "low": "7.06000000",
+    "volume": "2.41000000"
+}
+                                        </pre>
+                                    </div><!-- /right pannel-->
+                                </div><!-- /accordion-inner -->
+                            </div><!-- /collapse -->
+                        </div><!-- /accordion-group -->
+                    </div><!-- Accordion -->
+                </div>
+            </div>
+        </div>
+    </div><!--/ .container -->
+</div><!--/ #features -->
+<br>
+
+    <div id="showcase">
+        <div class="container">
+            <div class="row">
+                <h1 class="centered">Final Words</h1>
+                <br>
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p class="centered" style="color:white">I hope that this tutorial has show you the basic uses of Coinbase Exchange and an introduction into how the API works. While I have skipped many extra topics and options to the topics covered here. I highly suggest checking out the official documentation for an up to date reference.</p>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>	
+        </div>
+    </div>	
+
+    </div>
+    <div id="c">
+<div class="container">
+    <p>Tutorial by: <b>Sam Quinn</b></p>
+
+</div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/bootstrap.js"></script>
+    </body>
+    </html>
